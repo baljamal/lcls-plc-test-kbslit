@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="MAIN" Id="{7cf2c0e8-1cb0-4649-aa9d-13c0b84e5c40}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM Main
+VAR
+    {attribute 'pytmc' := 'pv: TMO:DREAM:KBSLIT:MMS01'}
+    M1 : DUT_MotionStage := (nEnableMode:=ENUM_StageEnableMode.DURING_MOTION, bPowerSelf:=TRUE);
+    fbMotionStage_M1 : FB_MotionStage;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[fbMotionStage_M1(stMotionStage:=M1);
+M1.bHardwareEnable := TRUE;
+M1.bLimitBackwardEnable := TRUE;
+M1.bLimitForwardEnable := TRUE;]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
