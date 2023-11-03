@@ -4,14 +4,15 @@
     <Declaration><![CDATA[PROGRAM Main
 VAR
     {attribute 'pytmc' := 'pv: TMO:DREAM:KBSLIT:MMS01'}
-    M1 : DUT_MotionStage := (nEnableMode:=ENUM_StageEnableMode.DURING_MOTION, bPowerSelf:=TRUE);
+    M1 : ST_MotionStage := (nEnableMode:=ENUM_StageEnableMode.DURING_MOTION, bPowerSelf:=TRUE);
     fbMotionStage_M1 : FB_MotionStage;
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[fbMotionStage_M1(stMotionStage:=M1);
 M1.bHardwareEnable := TRUE;
 M1.bLimitBackwardEnable := TRUE;
-M1.bLimitForwardEnable := TRUE;]]></ST>
+M1.bLimitForwardEnable := TRUE;
+]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>
