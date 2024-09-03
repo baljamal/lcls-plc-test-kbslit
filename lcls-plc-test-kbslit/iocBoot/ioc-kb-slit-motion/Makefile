@@ -5,8 +5,8 @@ IOC_INSTANCE_PATH := $(shell pwd)
 PRODUCTION_IOC := 0
 
 PROJECT_NAME := lcls-plc-test-kbslit
-PROJECT_PATH := ../../lcls-plc-test-kbslit/lcls-plc-test-kbslit.tsproj
-PLC := lcls-plc-dream-kbslit
+PROJECT_PATH := ../../lcls-plc-test-kbslit.tsproj
+PLC := kb-slit_motion
 
 PYTMC_OPTS :=
 PREFIX := PLC:$(PLC)

@@ -1,0 +1,2 @@
+epicsEnvSet("IOC_TOP", "/c/Users/baljamal/Desktop/Target/iocBoot/ioc-kb-slit-motion")
+epicsEnvSet("IOC_DATA", "/cds/data/iocData")

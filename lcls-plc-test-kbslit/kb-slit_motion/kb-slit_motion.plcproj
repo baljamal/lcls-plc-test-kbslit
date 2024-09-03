@@ -2,19 +2,19 @@
   <PropertyGroup>
     <FileVersion>1.0.0.0</FileVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{6c8e1038-22db-433a-af5f-6b33ad13bdf5}</ProjectGuid>
+    <ProjectGuid>{694f688b-78b8-4951-9680-fcd012131443}</ProjectGuid>
     <SubObjectsSortedByName>True</SubObjectsSortedByName>
     <DownloadApplicationInfo>true</DownloadApplicationInfo>
     <WriteProductVersion>true</WriteProductVersion>
     <GenerateTpy>false</GenerateTpy>
-    <Name>lcls_plc_dream_kbslit</Name>
+    <Name>kb_slit_motion</Name>
     <ProgramVersion>3.1.4023.0</ProgramVersion>
-    <Application>{8f2019e7-5e57-433f-8121-a166aedfc980}</Application>
-    <TypeSystem>{6ef57e92-ef74-4bf1-8231-0e8e0f276869}</TypeSystem>
-    <Implicit_Task_Info>{6b0277d9-ec1b-46d7-b840-b53444705915}</Implicit_Task_Info>
-    <Implicit_KindOfTask>{6040ab82-cba8-4d68-ad79-18be4bccd1c8}</Implicit_KindOfTask>
-    <Implicit_Jitter_Distribution>{0a3f029c-f215-483b-950c-ea18a7dd60bc}</Implicit_Jitter_Distribution>
-    <LibraryReferences>{2eab8f5f-600a-494b-a26a-7ebd6fa5d2ae}</LibraryReferences>
+    <Application>{d7701a0d-4859-496b-bef4-e337e96d435c}</Application>
+    <TypeSystem>{478bf4e5-7b69-492a-a8fe-df00b4ca9bba}</TypeSystem>
+    <Implicit_Task_Info>{5596950d-fe6f-4994-8e8b-9a6e72f6d25a}</Implicit_Task_Info>
+    <Implicit_KindOfTask>{365ad3d9-b1ae-44e5-8592-8295f26d0fab}</Implicit_KindOfTask>
+    <Implicit_Jitter_Distribution>{29dece15-fadb-456a-b221-20cad8989b88}</Implicit_Jitter_Distribution>
+    <LibraryReferences>{c1cae090-3d78-47d6-ba79-062bab522a2c}</LibraryReferences>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="PlcTask.TcTTO">
@@ -31,6 +31,14 @@
     <Folder Include="POUs" />
   </ItemGroup>
   <ItemGroup>
+    <PlaceholderReference Include="lcls-twincat-common-components">
+      <DefaultResolution>lcls-twincat-common-components, * (SLAC)</DefaultResolution>
+      <Namespace>lcls_twincat_common_components</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="lcls-twincat-motion">
+      <DefaultResolution>lcls-twincat-motion, * (SLAC)</DefaultResolution>
+      <Namespace>lcls_twincat_motion</Namespace>
+    </PlaceholderReference>
     <PlaceholderReference Include="Tc2_Standard">
       <DefaultResolution>Tc2_Standard, * (Beckhoff Automation GmbH)</DefaultResolution>
       <Namespace>Tc2_Standard</Namespace>
@@ -45,20 +53,20 @@
     </PlaceholderReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="lcls-plc-dream-kbslit.tmc">
-      <SubType>Content</SubType>
-    </None>
+    <LibraryReference Include="Tc2_MC2,3.3.48.0,Beckhoff Automation GmbH">
+      <Namespace>Tc2_MC2</Namespace>
+    </LibraryReference>
   </ItemGroup>
   <ItemGroup>
-    <LibraryReference Include="lcls-twincat-motion,4.0.4,SLAC">
-      <Namespace>lcls_twincat_motion</Namespace>
-    </LibraryReference>
+    <None Include="kb-slit_motion.tmc">
+      <SubType>Content</SubType>
+    </None>
   </ItemGroup>
   <ProjectExtensions>
     <PlcProjectOptions>
       <XmlArchive>
-  <Data>
-    <o xml:space="preserve" t="OptionKey">
+        <Data>
+          <o xml:space="preserve" t="OptionKey">
       <v n="Name">"&lt;ProjectRoot&gt;"</v>
       <d n="SubKeys" t="Hashtable" ckt="String" cvt="OptionKey">
         <v>{40450F57-0AA3-4216-96F3-5444ECB29763}</v>
@@ -79,13 +87,13 @@
       </d>
       <d n="Values" t="Hashtable" />
     </o>
-  </Data>
-  <TypeList>
-    <Type n="Hashtable">System.Collections.Hashtable</Type>
-    <Type n="OptionKey">{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}</Type>
-    <Type n="String">System.String</Type>
-  </TypeList>
-</XmlArchive>
+        </Data>
+        <TypeList>
+          <Type n="Hashtable">System.Collections.Hashtable</Type>
+          <Type n="OptionKey">{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}</Type>
+          <Type n="String">System.String</Type>
+        </TypeList>
+      </XmlArchive>
     </PlcProjectOptions>
   </ProjectExtensions>
 </Project>

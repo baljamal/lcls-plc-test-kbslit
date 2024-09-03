@@ -1,2 +1,0 @@
-epicsEnvSet("IOC_TOP", "/c/Users/baljamal/work/lcls-plc-test-kbslit/lcls-plc-test-kbslit/iocBoot/ioc-lcls-plc-dream-kbslit")
-epicsEnvSet("IOC_DATA", "/cds/data/iocData")
