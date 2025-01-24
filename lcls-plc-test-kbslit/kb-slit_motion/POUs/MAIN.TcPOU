@@ -3,91 +3,15 @@
   <POU Name="MAIN" Id="{07920125-49f1-46f1-bbdd-8639856875da}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM Main
 VAR
-    // Motor 1
-    {attribute 'pytmc' := '
-        pv: @(PREFIX)01
-        field: KB Slit Motor 1
-    '}
-    M1: ST_MotionStage := (sName := 'TMO:DREAM:KBSLIT:MMS01');
-    fbMotion1: FB_MotionStage;
-
-    M1_Raw_Position  AT %I*: DINT;
-    M1_Position : REAL;
-
-    // Motor 2
-    {attribute 'pytmc' := '
-        pv: @(PREFIX)02
-        field: KB Slit Motor 2
-    '}
-    M2: ST_MotionStage := (sName := 'TMO:DREAM:KBSLIT:MMS02');
-    fbMotion2: FB_MotionStage;
-
-    M2_Raw_Position  AT %I*: DINT;
-	M2_Position : REAL; 
-
-    // Motor 3
-    {attribute 'pytmc' := '
-        pv: @(PREFIX)03
-        field: KB Slit Motor 3
-    '}
-    M3: ST_MotionStage := (sName := 'TMO:DREAM:KBSLIT:MMS03');
-    fbMotion3: FB_MotionStage;
-
-	M3_Raw_Position  AT %I*: DINT;
-    M3_Position : REAL; 
-
-    // Motor 4
-    {attribute 'pytmc' := '
-        pv: @(PREFIX)04
-        field: KB Slit Motor 4
-    '}
-    M4: ST_MotionStage := (sName := 'TMO:DREAM:KBSLIT:MMS04');
-    fbMotion4: FB_MotionStage;
-
-	M4_Raw_Position  AT %I*: DINT;
-	M4_Position : REAL;
-
-    bInit: BOOL := TRUE;
+    {attribute 'pytmc' := 'pv: TEST:SCATTER:MMS:TOP'}
+    {attribute 'TcLinkTo' := '.nRawEncoderDINT      := TIID^Device 1 (EtherCAT)^Term 9 (EK1200)^Term 8 (EL5072)^IND Inputs Channel 1^Position'}
+    M1: ST_MotionStage := (sName := 'TEST:SCATTER:MMS:TOP');
+    {attribute 'pytmc' := 'pv: TEST:SCATTER:MMS:BOTTOM'}
+    {attribute 'TcLinkTo' := '.nRawEncoderDINT      := TIID^Device 1 (EtherCAT)^Term 9 (EK1200)^Term 8 (EL5072)^IND Inputs Channel 2^Position'}
+    M2: ST_MotionStage := (sName := 'TEST:SCATTER:MMS:BOTTOM');
 END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[M1_Position := M1_Raw_Position /1000000.0;
-M2_Position := M2_Raw_Position /1000000.0;
-M3_Position := M3_Raw_Position /1000000.0;
-M4_Position := M4_Raw_Position /1000000.0;
-
-
-IF bInit THEN
-    M1.bHardwareEnable := TRUE;
-	M1.nEnableMode := E_StageEnableMode.ALWAYS;
-    M1.bPowerSelf := TRUE;
-    M1.bLimitForwardEnable := TRUE;
-    M1.bLimitBackwardEnable := TRUE;
-
-    M2.bHardwareEnable := TRUE;
-	M2.nEnableMode := E_StageEnableMode.ALWAYS;
-    M2.bPowerSelf := TRUE;
-    M2.bLimitForwardEnable := TRUE;
-    M2.bLimitBackwardEnable := TRUE;
-
-    M3.bHardwareEnable := TRUE;
-	M3.nEnableMode := E_StageEnableMode.ALWAYS;
-    M3.bPowerSelf := TRUE;
-    M3.bLimitForwardEnable := TRUE;
-    M3.bLimitBackwardEnable := TRUE;
-
-    M4.bHardwareEnable := TRUE;
-	M4.nEnableMode := E_StageEnableMode.ALWAYS;
-    M4.bPowerSelf := TRUE;
-    M4.bLimitForwardEnable := TRUE;
-    M4.bLimitBackwardEnable := TRUE;
-
-    bInit := FALSE;
-END_IF
-
-fbMotion1(stMotionStage := M1);
-fbMotion2(stMotionStage := M2);
-fbMotion3(stMotionStage := M3);
-fbMotion3(stMotionStage := M4);]]></ST>
+      <ST><![CDATA[]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>
