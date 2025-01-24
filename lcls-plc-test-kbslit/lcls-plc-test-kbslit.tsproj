@@ -1013,7 +1013,7 @@ External Setpoint Generation:
 		</Motion>
 		<Plc>
 			<Project GUID="{694F688B-78B8-4951-9680-FCD012131443}" Name="kb-slit_motion" PrjFilePath="kb-slit_motion\kb-slit_motion.plcproj" TmcFilePath="kb-slit_motion\kb-slit_motion.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="kb-slit_motion\kb-slit_motion.tmc" TmcHash="{E6DB5C0E-A8B0-871C-6464-0CD7129E80CF}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="kb-slit_motion\kb-slit_motion.tmc" TmcHash="{A7CAED0D-AFE1-E65D-A702-766ED0DE7230}">
 					<Name>kb-slit_motion Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="1">
@@ -1122,21 +1122,21 @@ External Setpoint Generation:
 							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 						</Var>
 						<Var>
-							<Name>Main.M2.bBrakeRelease</Name>
-							<Comment><![CDATA[ NC Brake Output: TRUE to release brake]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>Main.fbM1.fbDriveVirtual.MasterAxis.PlcToNc</Name>
-							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
-						</Var>
-						<Var>
 							<Name>Main.M1.bBrakeRelease</Name>
 							<Comment><![CDATA[ NC Brake Output: TRUE to release brake]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
 							<Name>Main.M2.Axis.PlcToNc</Name>
+							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+						</Var>
+						<Var>
+							<Name>Main.M2.bBrakeRelease</Name>
+							<Comment><![CDATA[ NC Brake Output: TRUE to release brake]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>Main.fbM1.fbDriveVirtual.MasterAxis.PlcToNc</Name>
 							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 						</Var>
 						<Var>

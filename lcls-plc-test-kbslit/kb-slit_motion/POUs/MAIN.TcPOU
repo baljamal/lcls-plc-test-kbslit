@@ -12,11 +12,32 @@ VAR
     
     fbM1: FB_MotionStage;
     fbM2: FB_MotionStage;
+   
+    M1_position : LREAL;
+    M2_position : LREAL;
     
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[fbM1(stMotionStage:=M1);
-fbM2(stMotionStage:=M2);]]></ST>
+fbM2(stMotionStage:=M2);
+(*
+M1.bLimitBackwardEnable := FALSE;
+M1.bLimitForwardEnable := FALSE;
+
+M1.bAllForwardEnable := TRUE;
+M1.bAllBackwardEnable := TRUE;
+*)
+M1.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+M1.nHomingMode := ENUM_EpicsHomeCmd.NONE;
+(*
+M2.bLimitBackwardEnable := FALSE;
+M2.bLimitForwardEnable := FALSE;
+
+M2.bAllForwardEnable := TRUE;
+M2.bAllBackwardEnable := TRUE;
+*)
+M2.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+M2.nHomingMode := ENUM_EpicsHomeCmd.NONE;]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>
