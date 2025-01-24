@@ -17,7 +17,7 @@
     <LibraryReferences>{c1cae090-3d78-47d6-ba79-062bab522a2c}</LibraryReferences>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="GVLs\GVL.TcGVL">
+    <Compile Include="GVLs\GVL_Main.TcGVL">
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>
     </Compile>
@@ -35,9 +35,13 @@
     <Folder Include="POUs" />
   </ItemGroup>
   <ItemGroup>
-    <PlaceholderReference Include="LCLS General">
-      <DefaultResolution>LCLS General, * (SLAC)</DefaultResolution>
-      <Namespace>LCLS_General</Namespace>
+    <PlaceholderReference Include="lcls-twincat-common-components">
+      <DefaultResolution>lcls-twincat-common-components, * (SLAC)</DefaultResolution>
+      <Namespace>lcls_twincat_common_components</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="lcls-twincat-motion">
+      <DefaultResolution>lcls-twincat-motion, * (SLAC)</DefaultResolution>
+      <Namespace>lcls_twincat_motion</Namespace>
     </PlaceholderReference>
     <PlaceholderReference Include="Tc2_Standard">
       <DefaultResolution>Tc2_Standard, * (Beckhoff Automation GmbH)</DefaultResolution>
@@ -53,9 +57,6 @@
     </PlaceholderReference>
   </ItemGroup>
   <ItemGroup>
-    <LibraryReference Include="lcls-twincat-motion,2.2.0,SLAC">
-      <Namespace>lcls_twincat_motion</Namespace>
-    </LibraryReference>
     <LibraryReference Include="Tc2_MC2,3.3.48.0,Beckhoff Automation GmbH">
       <Namespace>Tc2_MC2</Namespace>
     </LibraryReference>
@@ -64,6 +65,11 @@
     <None Include="kb-slit_motion.tmc">
       <SubType>Content</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <PlaceholderResolution Include="lcls-twincat-motion">
+      <Resolution>lcls-twincat-motion, 4.2.0 (SLAC)</Resolution>
+    </PlaceholderResolution>
   </ItemGroup>
   <ProjectExtensions>
     <PlcProjectOptions>

@@ -3,71 +3,20 @@
   <POU Name="MAIN" Id="{07920125-49f1-46f1-bbdd-8639856875da}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM Main
 VAR
-    (*
-    {attribute 'pytmc' := 'pv: TMO:DREAM:KBSLIT:MMS01'}
-    M1 : DUT_MotionStage := (nEnableMode:=ENUM_StageEnableMode.DURING_MOTION, bPowerSelf:=TRUE);
-    fbMotionStage_M1 : FB_MotionStage;
-
-	{attribute 'pytmc' := 'pv: TMO:DREAM:KBSLIT:MMS02'}
-    M2 : DUT_MotionStage := (nEnableMode:=ENUM_StageEnableMode.DURING_MOTION, bPowerSelf:=TRUE);
-    fbMotionStage_M2 : FB_MotionStage;
-
-    {attribute 'pytmc' := 'pv: TMO:DREAM:KBSLIT:MMS03'}
-    M3 : DUT_MotionStage := (nEnableMode:=ENUM_StageEnableMode.DURING_MOTION, bPowerSelf:=TRUE);
-    fbMotionStage_M3 : FB_MotionStage;
-
-	{attribute 'pytmc' := 'pv: TMO:DREAM:KBSLIT:MMS04'}
-    M4 : DUT_MotionStage := (nEnableMode:=ENUM_StageEnableMode.DURING_MOTION, bPowerSelf:=TRUE);
-    fbMotionStage_M4 : FB_MotionStage;
-	*)
-	M1_Raw_Position  AT %I*: DINT;
-	M2_Raw_Position  AT %I*: DINT; 
-	M3_Raw_Position  AT %I*: DINT; 
-	M4_Raw_Position  AT %I*: DINT;
-
-	M1_Position : REAL;
-	M2_Position : REAL; 
-	M3_Position : REAL; 
-	M4_Position : REAL;
+    {attribute 'pytmc' := 'pv: TEST:SCATTER:MMS:TOP'}
+    {attribute 'TcLinkTo' := '.nRawEncoderDINT      := TIID^Device 1 (EtherCAT)^Term 9 (EK1200)^Term 8 (EL5072)^IND Inputs Channel 1^Position'}
+    M1: ST_MotionStage := (sName := 'TEST:SCATTER:MMS:TOP');
+    {attribute 'pytmc' := 'pv: TEST:SCATTER:MMS:BOTTOM'}
+    {attribute 'TcLinkTo' := '.nRawEncoderDINT      := TIID^Device 1 (EtherCAT)^Term 9 (EK1200)^Term 8 (EL5072)^IND Inputs Channel 2^Position'}
+    M2: ST_MotionStage := (sName := 'TEST:SCATTER:MMS:BOTTOM');
+    
+    fbM1: FB_MotionStage;
+    fbM2: FB_MotionStage;
+    
 END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[fbSL2K4(stBottomBlade:=  GVL.M1,
-        stNorthBlade:= GVL.M2,
-        stTopBlade:=  GVL.M3,
-        stSouthBlade:=  GVL.M4,
-        bExecuteMotion:=bExecuteMotion);
-
-
-(*
-M1_Position := M1_Raw_Position /1000000.0;
-M2_Position := M2_Raw_Position /1000000.0;
-M3_Position := M3_Raw_Position /1000000.0;
-M4_Position := M4_Raw_Position /1000000.0;
-
-fbMotionStage_M1(stMotionStage:=M1);
-// M1.nRawEncoderINT := M1_position;
-M1.bHardwareEnable := TRUE;
-M1.bLimitBackwardEnable := TRUE;
-M1.bLimitForwardEnable := TRUE;
-
-fbMotionStage_M2(stMotionStage:=M2);
-// M2.nRawEncoderINT := M2_position;
-M2.bHardwareEnable := TRUE;
-M2.bLimitBackwardEnable := TRUE;
-M2.bLimitForwardEnable := TRUE;
-
-fbMotionStage_M3(stMotionStage:=M3);
-// M3.nRawEncoderINT := M3_position;
-M3.bHardwareEnable := TRUE;
-M3.bLimitBackwardEnable := TRUE;
-M3.bLimitForwardEnable := TRUE;
-
-fbMotionStage_M4(stMotionStage:=M4);
-// M4.nRawEncoderINT := M4_position;
-M4.bHardwareEnable := TRUE;
-M4.bLimitBackwardEnable := TRUE;
-M4.bLimitForwardEnable := TRUE;
-*)]]></ST>
+      <ST><![CDATA[fbM1(stMotionStage:=M1);
+fbM2(stMotionStage:=M2);]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>
