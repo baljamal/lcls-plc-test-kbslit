@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <GVL Name="GVL" Id="{6f81f5f7-0a84-4a54-8d7d-5984f3eae6b9}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+    {attribute 'pytmc' := 'pv: SL2K4:SCATTER:MMS:BOTTOM'}
+    M1 : DUT_MotionStage := (nEnableMode:=ENUM_StageEnableMode.DURING_MOTION, bPowerSelf:=TRUE);
+
+	{attribute 'pytmc' := 'pv: SL2K4:SCATTER:MMS:NORTH'}
+    M2 : DUT_MotionStage := (nEnableMode:=ENUM_StageEnableMode.DURING_MOTION, bPowerSelf:=TRUE);
+
+    {attribute 'pytmc' := 'pv: SL2K4:SCATTER:MMS:TOP'}
+    M3 : DUT_MotionStage := (nEnableMode:=ENUM_StageEnableMode.DURING_MOTION, bPowerSelf:=TRUE);
+
+	{attribute 'pytmc' := 'pv: SL2K4:SCATTER:MMS:SOUTH'}
+    M4 : DUT_MotionStage := (nEnableMode:=ENUM_StageEnableMode.DURING_MOTION, bPowerSelf:=TRUE);
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>
