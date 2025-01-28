@@ -1013,7 +1013,7 @@ External Setpoint Generation:
 		</Motion>
 		<Plc>
 			<Project GUID="{694F688B-78B8-4951-9680-FCD012131443}" Name="kb-slit_motion" PrjFilePath="kb-slit_motion\kb-slit_motion.plcproj" TmcFilePath="kb-slit_motion\kb-slit_motion.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="kb-slit_motion\kb-slit_motion.tmc" TmcHash="{A7CAED0D-AFE1-E65D-A702-766ED0DE7230}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="kb-slit_motion\kb-slit_motion.tmc" TmcHash="{706CEE53-56BC-61A1-9374-044266717523}">
 					<Name>kb-slit_motion Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="1">
@@ -1114,6 +1114,14 @@ External Setpoint Generation:
 							<Name>Main.fbM2.fbDriveVirtual.MasterAxis.NcToPlc</Name>
 							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 						</Var>
+						<Var>
+							<Name>Main.M1_position</Name>
+							<Type>DINT</Type>
+						</Var>
+						<Var>
+							<Name>Main.M2_position</Name>
+							<Type>DINT</Type>
+						</Var>
 					</Vars>
 					<Vars VarGrpType="2" AreaNo="1">
 						<Name>PlcTask Outputs</Name>
@@ -1143,6 +1151,14 @@ External Setpoint Generation:
 							<Name>Main.fbM2.fbDriveVirtual.MasterAxis.PlcToNc</Name>
 							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 						</Var>
+						<Var>
+							<Name>Main.M1_position_UDINT</Name>
+							<Type>UDINT</Type>
+						</Var>
+						<Var>
+							<Name>Main.M2_position_UDINT</Name>
+							<Type>UDINT</Type>
+						</Var>
 					</Vars>
 					<Vars VarGrpType="8" AreaNo="4">
 						<Name>PlcTask Retains</Name>
@@ -1167,8 +1183,8 @@ External Setpoint Generation:
 					<UnrestoredVarLinks ImportTime="2024-01-19T09:16:44">
 						<OwnerA Name="InputDst" Prefix="TIPC^kb-slit_motion^kb-slit_motion Instance" Type="1">
 							<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 8 (EK1200)^Term 6 (EL5072)">
-								<Link VarA="Main.M1_position" TypeA="INT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000006}" VarB="IND Inputs Channel 1^Position" Size="16" RestoreInfo="TypeMismatch" OldTypeA="INT" OldGuidA="{18071995-0000-0000-0000-000000000006}" NewTypeA="DINT" NewGuidA="{18071995-0000-0000-0000-000000000009}"/>
-								<Link VarA="Main.M2_position" TypeA="INT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000006}" VarB="IND Inputs Channel 2^Position" Size="16" RestoreInfo="TypeMismatch" OldTypeA="INT" OldGuidA="{18071995-0000-0000-0000-000000000006}" NewTypeA="DINT" NewGuidA="{18071995-0000-0000-0000-000000000009}"/>
+								<Link VarA="Main.M1_position" TypeA="INT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000006}" VarB="IND Inputs Channel 1^Position" Size="16" RestoreInfo="BNotFound" OldTypeA="INT" OldGuidA="{18071995-0000-0000-0000-000000000006}" NewTypeA="DINT" NewGuidA="{18071995-0000-0000-0000-000000000009}"/>
+								<Link VarA="Main.M2_position" TypeA="INT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000006}" VarB="IND Inputs Channel 2^Position" Size="16" RestoreInfo="BNotFound" OldTypeA="INT" OldGuidA="{18071995-0000-0000-0000-000000000006}" NewTypeA="DINT" NewGuidA="{18071995-0000-0000-0000-000000000009}"/>
 							</OwnerB>
 							<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 8 (EK1200)^Term 7 (EL5072)">
 								<Link VarA="Main.M3_position" TypeA="INT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000006}" VarB="IND Inputs Channel 1^Position" Size="16" RestoreInfo="TypeMismatch" OldTypeA="INT" OldGuidA="{18071995-0000-0000-0000-000000000006}" NewTypeA="DINT" NewGuidA="{18071995-0000-0000-0000-000000000009}"/>
@@ -1179,7 +1195,7 @@ External Setpoint Generation:
 					<UnrestoredVarLinks ImportTime="2024-01-19T09:48:35">
 						<OwnerA Name="InputDst" Prefix="TIPC^kb-slit_motion^kb-slit_motion Instance" Type="1">
 							<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 8 (EK1200)^Term 6 (EL5072)">
-								<Link VarA="Main.M2_position" TypeA="DINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000009}" VarB="IND Inputs Channel 2^Position" RestoreInfo="ANotFound"/>
+								<Link VarA="Main.M2_position" TypeA="DINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000009}" VarB="IND Inputs Channel 2^Position" RestoreInfo="BNotFound"/>
 							</OwnerB>
 							<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 8 (EK1200)^Term 7 (EL5072)">
 								<Link VarA="Main.M3_position" TypeA="DINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000009}" VarB="IND Inputs Channel 1^Position" RestoreInfo="ANotFound"/>
@@ -1270,15 +1286,19 @@ External Setpoint Generation:
 		<OwnerA Name="TIPC^kb-slit_motion^kb-slit_motion Instance">
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 9 (EK1200)^Term 8 (EL5072)">
 				<Link VarA="PlcTask Inputs^Main.M1.nRawEncoderDINT" VarB="IND Inputs Channel 1^Position" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^Main.M1_position" VarB="IND Inputs Channel 1^Position" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^Main.M2.nRawEncoderDINT" VarB="IND Inputs Channel 2^Position" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^Main.M2_position" VarB="IND Inputs Channel 2^Position" AutoLink="true"/>
 			</OwnerB>
 			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^M1">
 				<Link VarA="PlcTask Inputs^Main.M1.Axis.NcToPlc" VarB="Outputs^ToPlc"/>
 				<Link VarA="PlcTask Outputs^Main.M1.Axis.PlcToNc" VarB="Inputs^FromPlc"/>
+				<Link VarA="PlcTask Outputs^Main.M1_position_UDINT" VarB="Enc^Inputs^In^nDataIn1" AutoLink="true"/>
 			</OwnerB>
 			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^M2">
 				<Link VarA="PlcTask Inputs^Main.M2.Axis.NcToPlc" VarB="Outputs^ToPlc"/>
 				<Link VarA="PlcTask Outputs^Main.M2.Axis.PlcToNc" VarB="Inputs^FromPlc"/>
+				<Link VarA="PlcTask Outputs^Main.M2_position_UDINT" VarB="Enc^Inputs^In^nDataIn1" AutoLink="true"/>
 			</OwnerB>
 		</OwnerA>
 	</Mappings>

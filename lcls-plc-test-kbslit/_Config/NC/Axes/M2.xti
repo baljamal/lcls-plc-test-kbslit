@@ -1425,18 +1425,18 @@ External Setpoint Generation:
 		</DataType>
 	</DataTypes>
 	<Axis Id="2" CreateSymbols="true" AxisType="1">
-		<Name>__FILENAME__</Name>
+		<Name>M2</Name>
 		<AxisPara>
 			<Dynamic AccelerationMaximum="0.25" DecelerationMaximum="0.25" Acceleration="0.25" Deceleration="0.25" Jerk="0.4"/>
 			<Velo Maximum="1"/>
 			<PositionAreaControl Enable="false"/>
-			<TargetPosControl Enable="false"/>
+			<TargetPosControl Range="0.01"/>
 			<OtherSettings AllowMotionCmdToSlave="true" PulseDistancePos="750" PulseDistanceNeg="750"/>
 		</AxisPara>
 		<Encoder Name="Enc" EncType="4">
-			<EncPara ScaleFactorNumerator="2.34375e-05" MaxCount="#x0000ffff">
+			<EncPara ScaleFactorNumerator="1e-06" Offset="-2147.483647" MaxCount="#xffffffff">
 				<SoftEndMinControl Range="-5"/>
-				<Inc RefSoftSyncMask="#x0000ffff"/>
+				<Inc RefMode="2" RefSoftSyncMask="#x0000ffff"/>
 			</EncPara>
 			<Vars VarGrpType="1">
 				<Name>Inputs</Name>
@@ -1496,7 +1496,7 @@ External Setpoint Generation:
 		</Encoder>
 		<Drive Name="Drive" DrvType="24">
 			<DrvPara>
-				<Analog VeloReferenz="1" TorqueSetpointScale="10" ScaleFactorActTorque="0.1"/>
+				<Analog VeloReferenz="3" TorqueSetpointScale="10" ScaleFactorActTorque="0.1"/>
 				<TimeComp TaskDelayCycles="1"/>
 			</DrvPara>
 			<Vars VarGrpType="1">
@@ -1568,7 +1568,7 @@ External Setpoint Generation:
 		</Drive>
 		<Controller Name="Ctrl" CtrType="1">
 			<CtrPara PriorControlFactor="1">
-				<PosDiffControl Enable="false"/>
+				<PosDiffControl Range="0.1"/>
 				<Observer BandWidth="20"/>
 			</CtrPara>
 		</Controller>
@@ -1607,7 +1607,6 @@ External Setpoint Generation:
 				<Link VarA="Drive^Outputs^Out^nCtrl1" VarB="STM Control^Control^Reduce torque" Size="1" OffsA="2"/>
 				<Link VarA="Drive^Outputs^Out^nCtrl1" VarB="STM Control^Control^Reset" Size="1" OffsA="1"/>
 				<Link VarA="Drive^Outputs^Out^nDataOut2[0]" VarB="STM Velocity^Velocity"/>
-				<Link VarA="Enc^Inputs^In^nDataIn1[0]" VarB="ENC Status compact^Counter value"/>
 				<Link VarA="Enc^Inputs^In^nDataIn2[0]" VarB="ENC Status compact^Latch value"/>
 				<Link VarA="Enc^Inputs^In^nState1" VarB="ENC Status compact^Status^Counter overflow" Size="1" OffsA="4"/>
 				<Link VarA="Enc^Inputs^In^nState1" VarB="ENC Status compact^Status^Counter underflow" Size="1" OffsA="3"/>
