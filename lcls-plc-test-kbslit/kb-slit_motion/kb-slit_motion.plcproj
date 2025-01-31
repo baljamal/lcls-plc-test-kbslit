@@ -17,11 +17,17 @@
     <LibraryReferences>{c1cae090-3d78-47d6-ba79-062bab522a2c}</LibraryReferences>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DUTs\E_HomeState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="GVLs\GVL_Main.TcGVL">
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>
     </Compile>
     <Compile Include="PlcTask.TcTTO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\FB_SLITS.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\MAIN.TcPOU">
@@ -43,6 +49,10 @@
       <DefaultResolution>lcls-twincat-motion, * (SLAC)</DefaultResolution>
       <Namespace>lcls_twincat_motion</Namespace>
     </PlaceholderReference>
+    <PlaceholderReference Include="PMPS">
+      <DefaultResolution>PMPS, * (SLAC - LCLS)</DefaultResolution>
+      <Namespace>PMPS</Namespace>
+    </PlaceholderReference>
     <PlaceholderReference Include="Tc2_Standard">
       <DefaultResolution>Tc2_Standard, * (Beckhoff Automation GmbH)</DefaultResolution>
       <Namespace>Tc2_Standard</Namespace>
@@ -57,6 +67,9 @@
     </PlaceholderReference>
   </ItemGroup>
   <ItemGroup>
+    <LibraryReference Include="LCLS General,2.11.0,SLAC">
+      <Namespace>LCLS_General</Namespace>
+    </LibraryReference>
     <LibraryReference Include="Tc2_MC2,3.3.48.0,Beckhoff Automation GmbH">
       <Namespace>Tc2_MC2</Namespace>
     </LibraryReference>

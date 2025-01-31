@@ -12,6 +12,11 @@ VAR
     
     fbM1: FB_MotionStage;
     fbM2: FB_MotionStage;
+	
+	M3: ST_MotionStage := (sName := 'TEST:SCATTER:MMS:NORTH');
+	M4: ST_MotionStage := (sName := 'TEST:SCATTER:MMS:SOUTH');
+	fbM3: FB_MotionStage;
+    fbM4: FB_MotionStage;
    
     {attribute 'TcLinkTo' := 'TIID^Device 1 (EtherCAT)^Term 9 (EK1200)^Term 8 (EL5072)^IND Inputs Channel 1^Position'}
     M1_position AT %I* : DINT;
@@ -25,35 +30,51 @@ VAR
     M1_position_UDINT AT %Q*: UDINT;
     {attribute 'TcLinkTo' := 'TINC^NC-Task 1 SAF^Axes^M2^Enc^Inputs^In^nDataIn1'}
     M2_position_UDINT AT %Q*: UDINT;
+	
+	bExecuteMotion :BOOL :=FALSE;
+	bMoveOk:BOOL :=TRUE;
+	fbSL2K4: FB_SLITS;
     
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[fbM1(stMotionStage:=M1);
-fbM2(stMotionStage:=M2);
 
 M1_position_LINT := M1_position;
 M1_position_LINT := M1_position_LINT + 2147483648;
 M1_position_UDINT := LINT_TO_UDINT(M1_position_LINT);
 //NC bias = -1 * 2147483648 * scaling factor + actual bias we want
 
+M1.bLimitBackwardEnable := TRUE;
+M1.bLimitForwardEnable := TRUE;
+M1.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+M1.nHomingMode := ENUM_EpicsHomeCmd.NONE;
+M1.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+M1.bHardwareEnable := TRUE;
+M1.bPowerSelf :=  TRUE;
+
+fbM2(stMotionStage:=M2);
+
 M2_position_LINT := M2_position;
 M2_position_LINT := M2_position_LINT + 2147483648;
 M2_position_UDINT := LINT_TO_UDINT(M2_position_LINT);
 //NC bias = -1 * 2147483648 * scaling factor + actual bias we want
 
-M1.bLimitBackwardEnable := TRUE;
-M1.bLimitForwardEnable := TRUE;
-M1.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
-M1.nHomingMode := ENUM_EpicsHomeCmd.NONE;
-M1.bHardwareEnable := TRUE;
-M1.bPowerSelf :=  TRUE;
-
 M2.bLimitBackwardEnable := TRUE;
 M2.bLimitForwardEnable := TRUE;
 M2.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
 M2.nHomingMode := ENUM_EpicsHomeCmd.NONE;
+M2.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
 M2.bHardwareEnable := TRUE;
-M2.bPowerSelf :=  TRUE;]]></ST>
+M2.bPowerSelf :=  TRUE;
+
+
+fbSL2K4.bMoveOk := bMoveOk;
+fbSL2K4(stTopBlade:=  M1,
+        stBottomBlade:= M2,
+        stNorthBlade:=  M3,
+        stSouthBlade:=  M4,
+        bExecuteMotion:=bExecuteMotion);
+]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

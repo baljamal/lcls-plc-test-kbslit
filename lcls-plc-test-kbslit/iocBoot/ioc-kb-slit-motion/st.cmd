@@ -16,6 +16,7 @@
 #
 #   lcls-twincat-common-components: * (SLAC)
 #   lcls-twincat-motion: * -> 4.2.0 (SLAC)
+#   PMPS: * (SLAC - LCLS)
 #   Tc2_Standard: * (Beckhoff Automation GmbH)
 #   Tc2_System: * (Beckhoff Automation GmbH)
 #   Tc3_Module: * (Beckhoff Automation GmbH)
@@ -153,6 +154,8 @@ dbLoadRecords("TwinCAT_Project.db", "PREFIX=PLC:kb-slit_motion,PROJECT=lcls-plc-
 dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:kb-slit_motion,DEPENDENCY=lcls-twincat-common-components,VERSION=*,VENDOR=SLAC")
 #   lcls-twincat-motion: * -> 4.2.0 (SLAC)
 dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:kb-slit_motion,DEPENDENCY=lcls-twincat-motion,VERSION=4.2.0,VENDOR=SLAC")
+#   PMPS: * (SLAC - LCLS)
+dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:kb-slit_motion,DEPENDENCY=PMPS,VERSION=*,VENDOR=SLAC - LCLS")
 #   Tc2_Standard: * (Beckhoff Automation GmbH)
 dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:kb-slit_motion,DEPENDENCY=Tc2_Standard,VERSION=*,VENDOR=Beckhoff Automation GmbH")
 #   Tc2_System: * (Beckhoff Automation GmbH)
